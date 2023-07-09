@@ -2,13 +2,15 @@ import React, {useState} from 'react';
 import UsersContainer from "./components/UsersContainer/UsersContainer";
 import UserPosts from "./components/UserPosts/UserPosts";
 
+import style from './App.module.css'
+
 const App = () => {
     const [userId, setUserId] = useState(null);
 
     return (
-        <div>
-            <UsersContainer setUserId={setUserId}/>
-            {userId && <UserPosts userId = {userId}/>}
+        <div className= {style.container}>
+           <div> <UsersContainer setUserId={setUserId}/></div>
+           <div>{userId && <UserPosts userId = {userId}/>}</div>
         </div>
     );
 };
