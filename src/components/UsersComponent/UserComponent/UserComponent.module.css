@@ -1,0 +1,19 @@
+.container{
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid silver;
+    padding: 10px;
+    margin: 10px;
+    width: 25%;
+}
+.userButton{
+    font-size: 15px;
+    background-color: blanchedalmond;
+    border: none;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.userButton:hover{
+    background-color: aquamarine;
+}
