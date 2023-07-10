@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import Users from "./components/Users/Users";
 
 const App = () => {
-    const [users, setUsers] = useState(null);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -12,9 +12,10 @@ const App = () => {
             .then(users => setUsers(users))
     }, [])
 
+
     return (
         <div>
-            {users &&  <Users  users={users}/>}
+            {users.map((user, id) =><Users key={id} user={user}/>)}
         </div>
     );
 };

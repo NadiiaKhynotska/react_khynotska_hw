@@ -1,11 +1,11 @@
 import React from 'react';
 
-const UserAddress = ({street, suite, city}) => {
+const UserAddress = ({address}) => {
     return (
         <div>
-            <div>street: {street}</div>
-            <div>suite: {suite}</div>
-            <div>city: {city}</div>
+            <div>street: {address.street}</div>
+            <div>suite: {address.suite}</div>
+            <div>city: {address.city}</div>
         </div>
     );
 };

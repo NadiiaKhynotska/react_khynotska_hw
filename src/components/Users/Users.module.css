@@ -1,0 +1,8 @@
+.container{
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid silver;
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+}

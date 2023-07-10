@@ -1,14 +1,14 @@
 import React from 'react';
 
-const UserDetails = ({id, name, username,email,phone,website}) => {
+const UserDetails = ({user}) => {
     return (
         <div>
-            <div>id: {id}</div>
-            <div>name: {name}</div>
-            <div>username: {username}</div>
-            <div>email: {email}</div>
-            <div>phone: {phone}</div>
-            <div>website: {website}</div>
+            <div>id: {user.id}</div>
+            <div>name: {user.name}</div>
+            <div>username: {user.username}</div>
+            <div>email: {user.email}</div>
+            <div>phone: {user.phone}</div>
+            <div>website: {user.website}</div>
         </div>
     );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Company = ({name,catchPhrase,bs}) => {
+const Company = ({company}) => {
     return (
         <div>
-            <div> name: {name}</div>
-            <div> catchPhrase: {catchPhrase}</div>
-            <div> bs: {bs}</div>
+            <div> name: {company.name}</div>
+            <div> catchPhrase: {company.catchPhrase}</div>
+            <div> bs: {company.bs}</div>
 
         </div>
     );
