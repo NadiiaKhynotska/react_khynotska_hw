@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 
 
 import Users from "./components/Users/Users";
-import style from './App.module.css'
 
 const App = () => {
     const [users, setUsers] = useState([]);
@@ -15,9 +14,9 @@ const App = () => {
 
 
     return (
-        <div className={style.mainContainer}>
-            {users.map((user, id) =><Users key={id} user={user}/>)}
-        </div>
+        <>
+                <Users users={users}/>
+        </>
     );
 };
 

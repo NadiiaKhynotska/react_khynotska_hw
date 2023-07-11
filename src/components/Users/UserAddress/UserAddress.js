@@ -1,12 +1,13 @@
 import React from 'react';
 
 const UserAddress = ({address}) => {
+    const {street, suite,city} = address
     return (
-        <div>
-            <div>street: {address.street}</div>
-            <div>suite: {address.suite}</div>
-            <div>city: {address.city}</div>
-        </div>
+        <>
+            <div>street: {street}</div>
+            <div>suite: {suite}</div>
+            <div>city: {city}</div>
+        </>
     );
 };
 
