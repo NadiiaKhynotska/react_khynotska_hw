@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import UserComponent from "./UserComponent/UserComponent";
 
-const UsersComponent = ({setUserId}) => {
+const UsersComponent = ({setUserId ,activeButton,setActiveButton}) => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -13,7 +13,11 @@ const UsersComponent = ({setUserId}) => {
 
     return (
         <>
-            {users.map(user => <UserComponent key={user.id} user={user} setUserId={setUserId}/> )}
+            {users.map(user => <UserComponent key={user.id}
+                                              user={user}
+                                              setUserId={setUserId}
+                                              setActiveButton={setActiveButton}
+                                              activeButton={activeButton}/> )}
         </>
     );
 };

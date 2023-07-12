@@ -7,14 +7,15 @@ import style from './App.module.css'
 
 const App = () => {
     const [userId, setUserId] = useState(null);
+    const [activeButton, setActiveButton] = useState(null)
 
 
     return (
         <>
             <div className={style.wrapper}>
-                <UsersComponent setUserId={setUserId}/>
+                <UsersComponent activeButton={activeButton} setActiveButton={setActiveButton}  setUserId={setUserId}/>
             </div>
-            {userId && <Posts userId={userId}/>}
+            {userId && activeButton && <Posts  userId={userId}/>}
         </>
     );
 

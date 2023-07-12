@@ -3,33 +3,28 @@ import {useState} from "react";
 
 import style from './UserComponent.module.css'
 
-const UserComponent = ({user, setUserId}) => {
+const UserComponent = ({user, setUserId, activeButton, setActiveButton}) => {
+    const {id, name} = user;
 
-    const [showPost, setShowPost] = useState(false);
-    const [activeButton, setActiveButton] = useState(null)
-
+    const [show, setShow] = useState(false);
     const handelClick = () => {
-
-        setShowPost(!showPost)
-        showPost ? setUserId(null) : setUserId(user.id)
-
-        setActiveButton(!activeButton)
-        activeButton? setActiveButton(null): setActiveButton(user.id)
-
-        return ({
-            setActiveButton,
-            setUserId,
-            showPost
+        setUserId(id)
+        setShow(!show)
+        setActiveButton(prev => {
+            if (prev === null) {
+                return id
+            }
+            return null
         })
     }
     return (
         <div className={style.container}>
-            <div>User name: {user.name}</div>
-            <div>User id: {user.id}</div>
+            <div>User name: {name}</div>
+            <div>User id: {id}</div>
             <button className={style.userButton}
                     onClick={handelClick}
-                    disabled={activeButton !== user.id && activeButton !== null}>
-                {showPost ? 'Hide posts' : 'Show posts'} </button>
+                    disabled={activeButton !== id && activeButton !== null}>
+                    {show ? 'Hide posts' : 'Show posts'} </button>
         </div>
     )
 }
