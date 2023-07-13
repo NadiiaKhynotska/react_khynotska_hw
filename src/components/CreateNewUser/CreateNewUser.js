@@ -16,9 +16,8 @@ const CreateNewUser = () => {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(user)
-        }).then(() => {
-            console.log('new user added');
-        })
+        }).then(response => response.json())
+            .then( user=> console.log(user))
     }
 
 

@@ -16,9 +16,8 @@ const CreatePost = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(post)
         })
-            .then(()=>{
-                console.log('new post added');
-            })
+            .then(response => response.json())
+            .then(post=> console.log(post))
     }
 
     return (
