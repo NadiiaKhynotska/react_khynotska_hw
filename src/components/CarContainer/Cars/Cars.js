@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Car from "../Car/Car";
 import style from './Cars.module.css'
 
-const Cars = ({onSave}) => {
+const Cars = ({onSave,handleUpdate}) => {
     const [cars, setCars] = useState([]);
     const [onDelete, setOnDelete] = useState(true);
 
@@ -30,7 +30,7 @@ const Cars = ({onSave}) => {
                 car={car}
                 key={car.id}
                 handleDelete={handleDelete}
-                // handleUpdate={handleUpdate}
+                handleUpdate={handleUpdate}
             />)}
         </div>
     );
