@@ -7,14 +7,35 @@ const CreateCar = ({setOnSave, onUpdate, setOnUpdate}) => {
     let priceRef = useRef('')
     let yearRef = useRef('')
 
+    useEffect(()=>{
+        if(onUpdate){
+            brandRef.current.value = onUpdate.brand
+            priceRef.current.value = onUpdate.price
+            yearRef.current.value = onUpdate.year
+        }
+
+    },[onUpdate])
     const handleSubmit = (e) => {
         e.preventDefault()
+
         const car = {
             brand: brandRef.current.value,
             price: priceRef.current.value,
             year: yearRef.current.value,
         }
-
+        if(onUpdate){
+                fetch(`http://owu.linkpc.net/carsAPI/v1/cars/${onUpdate.id}`, {
+                    headers:{'content-type':'application/json'},
+                    method:'PUT',
+                    body:JSON.stringify(car)
+                }).then(value => value.json()).then(()=>{
+                    setOnSave(prev=>!prev)
+                    setOnUpdate(null)
+                    brandRef.current.value = ''
+                    priceRef.current.value = ''
+                    yearRef.current.value = ''
+                })
+        }else
         fetch('http://owu.linkpc.net/carsAPI/v1/cars', {
             method: 'POST',
             headers: {
@@ -33,35 +54,13 @@ const CreateCar = ({setOnSave, onUpdate, setOnUpdate}) => {
             })
     }
 
-    useEffect(()=>{
-        if(onUpdate){
-            brandRef.current.value = onUpdate.brand
-            priceRef.current.value = onUpdate.price
-            yearRef.current.value = onUpdate.year
-        }
 
-    },[onUpdate])
-
-    const handleUpdate = (onUpdate)=>{
-        fetch(`http://owu.linkpc.net/carsAPI/v1/cars/${onUpdate.id}`, {
-            method: 'PUT',
-            headers: {
-                'accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(onUpdate)
-        })
-            .then(response => response.json())
-            .then(() => setOnSave(prev => !prev)),
-            setOnUpdate(null)
-
-    }
 
 
     return (
         <div className={style.create}>
-            <h2>Create New Car</h2>
-            <form onSubmit={!onUpdate?handleSubmit:handleUpdate}>
+            <h2>{onUpdate? 'Update current car':'Create New Car'}</h2>
+            <form onSubmit={handleSubmit}>
                 <label>Brand</label>
                 <input
                     type='text'
@@ -79,7 +78,7 @@ const CreateCar = ({setOnSave, onUpdate, setOnUpdate}) => {
                     type='number'
                     ref={yearRef}
                 />
-                <button>Add Car</button>
+                <button>{onUpdate? 'Update car': 'Add new car'}</button>
             </form>
         </div>
     );

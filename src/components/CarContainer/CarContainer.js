@@ -6,7 +6,6 @@ const CarContainer = () => {
     const [onSave, setOnSave] = useState(null);
     const [onUpdate, setOnUpdate] = useState(null);
 
-
     return (
         <div>
             <CreateCar setOnSave={setOnSave} onUpdate={onUpdate} setOnUpdate={setOnUpdate}/>
