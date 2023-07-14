@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Car from "../Car/Car";
 import style from './Cars.module.css'
 
-const Cars = ({onSave,handleUpdate}) => {
+const Cars = ({onSave,setOnUpdate}) => {
     const [cars, setCars] = useState([]);
     const [onDelete, setOnDelete] = useState(true);
 
@@ -29,8 +29,8 @@ const Cars = ({onSave,handleUpdate}) => {
             {cars.map(car=> <Car
                 car={car}
                 key={car.id}
+                setOnUpdate={setOnUpdate}
                 handleDelete={handleDelete}
-                handleUpdate={handleUpdate}
             />)}
         </div>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import style from './Car.module.css'
-const Car = ({car,handleDelete,handleUpdate}) => {
+const Car = ({car,handleDelete,setOnUpdate}) => {
     const {id,brand, price, year} = car;
 
 
@@ -12,7 +12,7 @@ const Car = ({car,handleDelete,handleUpdate}) => {
             <div>Brand: {brand}</div>
             <div>Price: {price}</div>
             <div>Year: {year}</div>
-            <button onClick={()=>{handleUpdate(car)}}>Update</button>
+            <button onClick={()=>{setOnUpdate(car)}}>Update</button>
             <button onClick={()=> handleDelete(id)}>Delete</button>
 
         </div>
