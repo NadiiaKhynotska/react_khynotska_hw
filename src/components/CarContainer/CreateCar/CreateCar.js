@@ -2,11 +2,11 @@ import React, {useRef} from 'react';
 
 import style from './CreateCar.module.css'
 
-const CreateCar = () => {
+const CreateCar = ({setOnSave}) => {
 
-    const brandRef = useRef('')
-    const priceRef = useRef('')
-    const yearRef = useRef('')
+    let brandRef = useRef('')
+    let priceRef = useRef('')
+    let yearRef = useRef('')
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -25,7 +25,13 @@ const CreateCar = () => {
             body: JSON.stringify(car)
         })
             .then(response => response.json())
-            .then(car => console.log(car))
+            .then(car => {
+                setOnSave(prev => !prev)
+
+                brandRef.current.value = ''
+                priceRef.current.value = ''
+                yearRef.current.value = ''
+            })
     }
 
     return (

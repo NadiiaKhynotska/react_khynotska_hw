@@ -1,14 +1,10 @@
 import React from 'react';
-import CreateCar from "./components/CreateCar/CreateCar";
-import DeleteCar from "./components/DeleteCar/DeleteCar";
-import PutCar from "./components/PutCar/PutCar";
+import CarContainer from "./components/CarContainer/CarContainer";
 
 const App = () => {
     return (
         <div>
-            <CreateCar/>
-            <DeleteCar/>
-            <PutCar/>
+            <CarContainer/>
         </div>
     );
 };
