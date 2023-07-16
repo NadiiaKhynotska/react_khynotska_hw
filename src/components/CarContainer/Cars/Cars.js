@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import Car from "../Car/Car";
 import style from './Cars.module.css'
 
-const Cars = () => {
+const Cars = ({onSave}) => {
     const [cars, setCars] = useState([]);
     // const [onDelete, setOnDelete] = useState(true);
 
@@ -11,7 +11,7 @@ const Cars = () => {
         fetch('http://owu.linkpc.net/carsAPI/v1/cars')
             .then(response => response.json())
             .then(cars => setCars(cars))
-    },[])
+    },[onSave])
     return (
         <div className={style.wrapper}>
             {cars.map(car=> <Car
