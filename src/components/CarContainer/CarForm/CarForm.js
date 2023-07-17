@@ -21,7 +21,8 @@ const CarForm = ({setOnSave, updateCar, setUpdateCar}) => {
             setValue('year', updateCar.year, {shouldValidate: true})
         }
     }, [updateCar])
-    const save = (car) => {
+
+    const update = (car)=>{
         if (updateCar) {
             fetch(`http://owu.linkpc.net/carsAPI/v1/cars/${updateCar.id}`, {
                 headers: {'content-type': 'application/json'},
@@ -33,7 +34,9 @@ const CarForm = ({setOnSave, updateCar, setUpdateCar}) => {
                     setUpdateCar(!updateCar)
                     reset()
                 })
-        } else {
+
+    }}
+    const save = (car) => {
 
             fetch('http://owu.linkpc.net/carsAPI/v1/cars', {
                 method: 'POST',
@@ -57,12 +60,11 @@ const CarForm = ({setOnSave, updateCar, setUpdateCar}) => {
                     console.log(e)
                 })
         }
-    }
 
     return (
         <div className={style.create}>
             <h2>{updateCar? 'Update current car':'Create New Car'}</h2>
-            <form onSubmit={handleSubmit(save)}>
+            <form onSubmit={handleSubmit(updateCar? update:save)}>
                 <label>Brand</label>
                 <input
                     type='text'
