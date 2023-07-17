@@ -23,7 +23,7 @@
 .create button {
     background: darkblue;
     color: #fff;
-    border: 0;
+    border: 4px solid white;
     padding: 8px;
     border-radius: 8px;
     cursor: pointer;
