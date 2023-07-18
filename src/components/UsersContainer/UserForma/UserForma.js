@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 
 import style from './UserForma.module.css'
 import {useForm} from "react-hook-form";
+import {apiService} from "../../servises/apiServises/apiServises";
 
 const UserForma = ({setUsers}) => {
 
@@ -11,14 +12,18 @@ const UserForma = ({setUsers}) => {
         reset,
     } = useForm();
 
-    const submit = (user) => {
 
-        fetch('https://jsonplaceholder.typicode.com/users', {
+
+
+
+    const submit = (user) => {
+        // apiService.submit(data)
+            fetch('https://jsonplaceholder.typicode.com/users', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(user)
         }).then(response => response.json())
-            .then(user => setUsers(prev => [...prev, user]))
+            .then(data => setUsers(prev => [...prev, data]))
         reset()
     }
 

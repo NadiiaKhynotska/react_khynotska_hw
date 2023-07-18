@@ -6,7 +6,7 @@ import style from './Users.module.css'
 const Users = ({users, setUsers}) => {
 
     useEffect(()=>{
-        fetch('http://jsonplaceholder.typicode.com/users')
+        fetch('https://jsonplaceholder.typicode.com/users')
             .then(response=> response.json())
             .then(users =>setUsers(users))
     },[])
