@@ -13,9 +13,11 @@ const UserForma = ({setUsers}) => {
     } = useForm();
 
 
-    const submit = (user) => {
-        userService.create()
-            .then(({data}) => setUsers(prev => [...prev, data]))
+    const submit = (data) => {
+        console.log(data)
+        userService.create(data)
+            .then(response=> response.data)
+            .then(data => setUsers(prev => [...prev, data]))
         reset()
     }
 
