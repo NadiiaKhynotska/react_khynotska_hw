@@ -14,7 +14,7 @@ const CommentForm = ({setComments}) => {
 
     const submit = (data) => {
         commentsService.create(data)
-            .then(response => response.json())
+            .then(response => response.data)
             .then(data => setComments(prev => [...prev,data]))
         reset()
     }

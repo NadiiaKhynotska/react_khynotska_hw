@@ -6,8 +6,8 @@ import style from './Comments.module.css'
 const Comments = ({comments, setComments}) => {
 
     useEffect(()=>{
-        commentsService.getAll ().then(response =>response.data).then(comments =>setComments(comments))
-    },[])
+        commentsService.getAll ().then(response =>response.data).then(data =>setComments(data))
+    },[comments])
 
 
     return (
