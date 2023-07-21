@@ -2,10 +2,11 @@ import React from 'react';
 
 import style from './Comment.module.css'
 
-const Comment = ({id,tittle, body}) => {
+const Comment = ({comment}) => {
+    const {id, name, body} = comment
     return (
         <div className={style.createComment}>
-            <h3>ID: {id}  Tittle: {tittle}</h3>
+            <h3>ID: {id}  Tittle: {name}</h3>
             <p> Body: {body}</p>
         </div>
     );

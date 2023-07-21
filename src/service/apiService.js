@@ -5,11 +5,10 @@ const comments = '/comments'
 
 const urls = {
     comments: {
-        base: comments,
-        byID: (id) => `${comments}/${id}`
+        base: comments
     }
 }
 
 const apiService = axios.create({baseURL})
 
-export { baseURL, comments,urls,apiService}
+export { baseURL,urls,apiService}

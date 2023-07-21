@@ -14,8 +14,7 @@ const CommentForm = ({setComments}) => {
 
     const submit = (data) => {
         commentsService.create(data)
-            .then(response => response.data)
-            .then(data => setComments(prev => [...prev,data]))
+            .then(({data}) => setComments(prev => [...prev,data]))
         reset()
     }
 
@@ -25,17 +24,17 @@ const CommentForm = ({setComments}) => {
             <h2>Create new comment</h2>
             <form onSubmit={handleSubmit(submit)}>
 
-                <label>Post title</label>
+                <label>Comment title</label>
                 <input
                     type='text'
-                    {...register('tittle')}
+                    {...register('name')}
                 />
                 <label>User email</label>
                 <input
                     type='email'
                     {...register('email')}
                 />
-                <label>Post body</label>
+                <label>Comment body</label>
                 <textarea
                     {...register('body')}
                 />
