@@ -4,8 +4,8 @@ import Cars from "./Cars/Cars";
 
 const Context = createContext(null)
 const CarContainer = () => {
-    const [updateCar, setUpdateCar] = useState([]);
-    const [trigger, setTrigger] = useState([]);
+    const [updateCar, setUpdateCar] = useState(null)
+    const [trigger, setTrigger] = useState(null);
 
 
     return (
