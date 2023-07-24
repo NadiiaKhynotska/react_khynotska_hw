@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import MainLayout from "./layouts/MainLayout/MainLayout";
 import {AlbumsPage, CommentsPage, NotFoundPage, PostPage, TodosPage} from "./pages";
 
@@ -11,6 +11,10 @@ let router = createBrowserRouter([
         path: '',
         element: <MainLayout/>,
         children:[
+            {
+                index: true,
+                element: <Navigate to={'todos'}/>
+            },
             {
                 path: 'todos',
                 element: <TodosPage/>

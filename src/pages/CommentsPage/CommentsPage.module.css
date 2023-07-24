@@ -1,0 +1,20 @@
+.commentsPage{
+    display: flex;
+}
+
+.comments{
+    width: 48%;
+}
+.comments button{
+   width: 200px;
+    height: 23px;
+    border: none;
+    border-radius: 9px;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.post{
+    width: 48%;
+}
