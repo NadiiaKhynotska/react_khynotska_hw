@@ -5,8 +5,8 @@ import {Todo} from "./Todo/Todo";
 const Todos = () => {
     const [todos, setTodos] = useState([]);
 
-    useEffect(async ()=>{
-        await  todoService.getAll().then(({data})=> setTodos(data))
+    useEffect( ()=>{
+         todoService.getAll().then(({data})=> setTodos(data))
     },[])
     return (
         <div>
