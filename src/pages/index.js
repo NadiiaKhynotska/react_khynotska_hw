@@ -1,1 +1,6 @@
 export * from './MoviesPage/MoviesPage'
+export * from './MoviesPage/NowPlaying/NowPlaying'
+export * from './MoviesPage/Popular/Popular'
+export * from './MoviesPage/TopRated/TopRated'
+export * from './MoviesPage/Upcoming/Upcoming'
+export * from './MoviesPage/NotFoundPage/NotFoundPage'
