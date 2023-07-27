@@ -2,14 +2,14 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 import css from './Header.module.css'
+import {UserInfo} from "./UserInfo/UserInfo";
 
 const Header = () => {
     return (
         <div className={css.header}>
-            <NavLink to={'movie/now_playing'}>Now Playing</NavLink>
-            <NavLink to={'movie/popular'}>Popular</NavLink>
-            <NavLink to={'movie/top_rated'}>Top Rated</NavLink>
-            <NavLink to={'movie/upcoming'}>Upcoming</NavLink>
+            <UserInfo/>
+            <NavLink to={'movie'}>All films</NavLink>
+            <NavLink to={'genres'}>All genres</NavLink>
         </div>
     );
 };

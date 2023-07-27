@@ -3,7 +3,7 @@
     background-color: silver;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .header a{
     text-decoration: none;

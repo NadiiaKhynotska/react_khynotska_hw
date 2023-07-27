@@ -1,0 +1,14 @@
+.create{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+    /*width: 20%;*/
+}
+
+.create div{
+    border-radius: 50%;
+    height: 40px;
+    width:40px;
+    border: 1px solid black;
+}

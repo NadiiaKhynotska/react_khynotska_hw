@@ -1,18 +1,16 @@
 const baseURL = 'https://api.themoviedb.org/3'
 
-const api_key='api_key=8b371c2ada55d20f38189492d2084bef'
+const api_key='Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNmM2NjUxMDA5NGExYTUyNmJlYzMwMDdhMDA1NTEwNyIsInN1YiI6IjY0YmZkNGU3MDE3NTdmMDBmZjVlYzc2ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Q3Y9mzjW9fomRNxRrO73gpKzVmesQoVHMohB46YsGRU'
 
-const nowPlaying = `/movie/now_playing,${api_key}`
-const popular = '/movie/popular'
-const topRated = '/movie/top_rated'
-const upcoming = '/movie/upcoming'
+const movie = `/discover/movie?page=4`
+const genres = '/genre/movie/list'
+
+
 
 
 const urls = {
-    nowPlaying,
-    popular,
-    topRated,
-    upcoming,
+    movie,
+    genres,
+    movieById:(id)=> `/movie/${id}`
 }
-
-export {baseURL, urls}
+export {baseURL, urls, api_key}

@@ -1,10 +1,12 @@
 import React from 'react';
-import {NowPlaying} from "./NowPlaying/NowPlaying";
+
+import {MovieListPage} from "./MovieListPage/MovieListPage";
+
 
 const MoviesPage = () => {
     return (
         <div>
-            <NowPlaying/>
+
         </div>
     );
 };
