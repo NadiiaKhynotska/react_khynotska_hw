@@ -8,8 +8,8 @@ const Header = () => {
     return (
         <div className={css.header}>
             <UserInfo/>
-            <NavLink to={'movie'}>All films</NavLink>
-            <NavLink to={'genres'}>All genres</NavLink>
+            <NavLink to={'movie'}>All movies</NavLink>
+            <NavLink to={'/movie/:id'}>Movie details</NavLink>
         </div>
     );
 };

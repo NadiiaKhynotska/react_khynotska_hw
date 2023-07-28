@@ -6,7 +6,7 @@ const UserInfo = () => {
     return (
         <div className={css.create}>
             <div></div>
-            <h4>User name</h4>
+            <h4>Nadiia Khynotska</h4>
         </div>
     );
 };

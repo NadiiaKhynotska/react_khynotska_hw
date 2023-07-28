@@ -8,7 +8,7 @@ const MovieListPage = () => {
 
     return (
         <div>
-            <h1>Movie list</h1>
+
             <MoviesList/>
             <Outlet/>
 

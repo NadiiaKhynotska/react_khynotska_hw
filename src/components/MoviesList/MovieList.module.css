@@ -2,6 +2,7 @@
     display: flex;
     flex-flow: wrap;
     align-items: center;
+    justify-content: center;
 }
 .create button {
     background: #e143e1;
@@ -10,8 +11,12 @@
     padding: 4px;
     border-radius: 8px;
     cursor: pointer;
-    margin: 0 2px;
+    margin:10px 2px 0 0;
+    width: 320px;
+    height: 33px;
+    transition: 1s;
 }
 .create button:hover{
     background: purple ;
+    transition: 1s;
 }
