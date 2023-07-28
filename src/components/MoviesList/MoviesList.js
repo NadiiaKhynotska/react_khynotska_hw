@@ -3,13 +3,15 @@ import {movieService} from "../../services/movieService";
 import {urls} from "../../constans";
 import {MovieListItem} from "./MovieListItem/MovieListItem";
 import css from './MovieList.module.css'
+import {genreService} from "../../services/genreService";
 
 const MoviesList = () => {
     const [movieList, setMovieList] = useState([]);
+    const [genres, setGenres] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [count, setCount] = useState(1);
     useEffect(() => {
-        // movieService.getAll(urls.movie+`${count}`)
+        // movieService.getAll(urls.movie+ `${count}`)
         const options = {
             method: 'GET',
             headers: {
@@ -28,15 +30,20 @@ const MoviesList = () => {
             })
             .catch(err => console.error(err));
 
+        genreService.getAll(urls.genres).then(({data})=> setGenres(data.genres))
     }, [count])
-    console.log(movieList, pageCount,count)
+    console.log(movieList, pageCount, count, genres)
 
     return (
         <div>
             <div className={css.create}>
-                {movieList.map(movieListItem => <MovieListItem key={movieListItem.id} movieListItem={movieListItem}/>)}
-                <button disabled={count<2} onClick={()=>setCount(prev=>prev-1)}>Previous</button>
-                <button disabled={count>pageCount} onClick={()=>setCount(prev=>prev+1)}>Next</button>
+                {movieList?.map(movieListItem => <MovieListItem
+                    key={movieListItem.id}
+                    movieListItem={movieListItem}
+                    genres={genres}
+                />)}
+                <button disabled={count < 2} onClick={() => setCount(prev => prev - 1)}>Previous</button>
+                <button disabled={count > pageCount} onClick={() => setCount(prev => prev + 1)}>Next</button>
             </div>
 
         </div>
