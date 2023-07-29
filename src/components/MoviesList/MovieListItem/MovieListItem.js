@@ -13,7 +13,7 @@ const MovieListItem = ({movieListItem, genres}) => {
                 <Link to={`/movie/${id}`}> {poster_path && <img src={`https://image.tmdb.org/t/p/w500${poster_path}`}/>}</Link>
                 <Link to={`/movie/${id}`}><h5>{title}</h5></Link>
                 {genre_ids?.map(movieGenre => (<p>{
-                    genres?.filter(value => value.id === movieGenre)[0].name}</p>))}
+                    genres?.filter(value => value.id === movieGenre)[0]?.name}</p>))}
             </div>
             <div>
                 { vote_average && <StarRatings

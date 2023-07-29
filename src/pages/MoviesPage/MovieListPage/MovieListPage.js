@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {Outlet} from "react-router-dom";
-import {MoviesList} from "../../../components";
+import React from 'react';
 
+import {MoviesList} from "../../../components";
 
 
 const MovieListPage = () => {
@@ -10,8 +9,6 @@ const MovieListPage = () => {
         <div>
 
             <MoviesList/>
-            <Outlet/>
-
         </div>
     );
 };
