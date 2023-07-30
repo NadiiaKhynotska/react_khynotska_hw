@@ -1,0 +1,43 @@
+.user{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+
+}
+
+.userBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+
+}
+
+.profilePhoto{
+    height: 200px;
+    width: 200px;
+    background-color: silver;
+    border-radius: 50%;
+
+
+}
+/*.animateArea {*/
+/*    width: 560px;*/
+/*    height: 190px;*/
+/*    background-image: url(https://davidwalsh.name/demo/twitter-logo-bird.png),*/
+/*    url(https://davidwalsh.name/wp-content/themes/jack/images/treehouseFrog.png),*/
+/*    url(https://davidwalsh.name/demo/bg-clouds.png);*/
+/*    background-position: 20px -90px, 30px 80px, 0px 0px;*/
+/*    background-repeat: no-repeat, no-repeat, repeat-x;*/
+/*}*/
+
+/*@keyframes animatedBird {*/
+/*    from { background-position: 20px 20px, 30px 80px, 0 0; }*/
+/*    to { background-position: 300px -90px, 30px 20px, 100% 0; }*/
+/*}*/
+
+/*.animateArea {*/
+/*    animation: animatedBird 4s linear infinite;*/
+/*}*/
