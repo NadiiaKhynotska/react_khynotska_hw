@@ -23,21 +23,21 @@
 
 
 }
-/*.animateArea {*/
-/*    width: 560px;*/
-/*    height: 190px;*/
-/*    background-image: url(https://davidwalsh.name/demo/twitter-logo-bird.png),*/
-/*    url(https://davidwalsh.name/wp-content/themes/jack/images/treehouseFrog.png),*/
-/*    url(https://davidwalsh.name/demo/bg-clouds.png);*/
-/*    background-position: 20px -90px, 30px 80px, 0px 0px;*/
-/*    background-repeat: no-repeat, no-repeat, repeat-x;*/
-/*}*/
+.animateArea {
+    width: 560px;
+    height: 190px;
+    background-image: url(https://davidwalsh.name/demo/twitter-logo-bird.png),
+    url(https://davidwalsh.name/wp-content/themes/jack/images/treehouseFrog.png),
+    url(https://davidwalsh.name/demo/bg-clouds.png);
+    background-position: 20px -90px, 30px 80px, 0px 0px;
+    background-repeat: no-repeat, no-repeat, repeat-x;
+}
 
-/*@keyframes animatedBird {*/
-/*    from { background-position: 20px 20px, 30px 80px, 0 0; }*/
-/*    to { background-position: 300px -90px, 30px 20px, 100% 0; }*/
-/*}*/
+@keyframes animatedBird {
+    from { background-position: 20px 20px, 30px 80px, 0 0; }
+    to { background-position: 300px -90px, 30px 20px, 100% 0; }
+}
 
-/*.animateArea {*/
-/*    animation: animatedBird 4s linear infinite;*/
-/*}*/
+.animateArea {
+    animation: animatedBird 4s linear infinite;
+}
