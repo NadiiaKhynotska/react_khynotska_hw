@@ -1,0 +1,11 @@
+.create{
+    width: 40%;
+    height: 10%;
+    padding: 10px 16px;
+    margin: 20px ;
+    border-bottom: 1px solid purple;
+    box-shadow: 2px 6px 10px rgba(0,0,0,0.1);
+}
+.create:hover {
+    box-shadow: 2px 6px 10px purple;
+}

@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    background-color: mediumpurple;
+    box-sizing: border-box;
+
+}
+
+.header a {
+    text-decoration: none;
+    font-size: 28px;
+    color: snow;
+}
+
+.header a[class = 'active'] {
+    color: purple;
+    font-weight: bold;
+}
