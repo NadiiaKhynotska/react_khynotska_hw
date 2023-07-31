@@ -5,20 +5,34 @@ import {MovieInfo} from "./MovieInfo/MovieInfo";
 import css from './MovieList.module.css'
 
 
+
 const MovieList = () => {
     const [movieList, setMovieList] = useState([]);
     const [genres, setGenres] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [count, setCount] = useState(1);
 
+    const href = window.location.href;
+    console.log(href)
+
     useEffect(()=>{
-        movieServices.getAll(count).then(({data})=>{
-            console.log(data);
-            setMovieList(data.results);
-            setPageCount(data.total_pages);
-            data.page = count
-        })
-            .catch(err => console.error(err));
+        if(href === 'http://localhost:3000/movie'){
+            movieServices.getAll(count).then(({data})=>{
+                console.log(data);
+                setMovieList(data.results);
+                setPageCount(data.total_pages);
+                data.page = count
+            })
+                .catch(err => console.error(err));
+        }else if( href === 'http://localhost:3000/topRated'){
+            movieServices.getTopRated(count).then(({data})=>{
+                console.log(data);
+                setMovieList(data.results);
+                setPageCount(data.total_pages);
+                data.page = count
+            })
+                .catch(err => console.error(err));
+        }
 
         genreServices.getAll().then(({data})=> setGenres(data.genres))
     }, [count])

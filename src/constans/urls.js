@@ -9,8 +9,10 @@ const genres = '/genre/movie/list'
 const topRated =  '/movie/top_rated'
 const urls = {
 
-    movieDetails,
     genres ,
+    movieDetails: {
+        byId:(movieId) => `${movieDetails}/${movieId}`
+    },
     topRated:{
         listCount: (count)=> `${topRated}?page=${count}`
     },

@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createBrowserRouter, Navigate} from "react-router-dom";
 import {MainLayout} from "./loyaut";
 import {HomePage, MovieCardPage, MovieListPage, NotFoundPage, UserPage} from "./pages";
 
@@ -8,6 +8,10 @@ let router = createBrowserRouter([
         path: '',
         element: <MainLayout/>,
         children: [
+            {
+                index: true,
+                element: <Navigate to={'topRated'}/>
+            },
             {
                 path:'topRated',
                 element:<HomePage/>
@@ -21,7 +25,7 @@ let router = createBrowserRouter([
                 element: <UserPage/>
             },
             {
-                path: 'movie/ :movieId',
+                path: 'movie/:movieId',
                 element: <MovieCardPage/>
             },
             {
