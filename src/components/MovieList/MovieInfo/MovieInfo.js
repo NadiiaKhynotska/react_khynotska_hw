@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 import StarRatings from "react-star-ratings/build/star-ratings";
 import {posterUrl} from "../../../constans";
@@ -7,7 +7,7 @@ import css from './MovieInfo.module.css'
 
 const MovieInfo = ({movieListItem, genres}) => {
     const {id, title, poster_path, genre_ids, vote_average} = movieListItem
-    const navigate = useNavigate();
+
 
     return (
         <div className={css.create}>
