@@ -11,7 +11,7 @@ const TestUseFetch = () => {
             {posts.map(post => (
                 <div key={post.id}>
                     <>id: {post.id}</>
-                    <>title: {post.title}</>
+                    <> title: {post.title}</>
                 </div>
             ))}
 
