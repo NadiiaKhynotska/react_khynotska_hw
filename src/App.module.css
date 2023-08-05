@@ -1,0 +1,29 @@
+.create{
+    height: 100%;
+    width: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+.create button{
+    border: none;
+    height: 40px;
+    width: 130px;
+    border-radius: 10px;
+}
+
+.dark{
+    background-color: darkgray;
+}
+.light{
+    background-color: plum;
+}
+.dark button{
+    background-color: purple;
+    color: white;
+}
+.light button{
+    background-color: pink;
+    color: black;
+}
