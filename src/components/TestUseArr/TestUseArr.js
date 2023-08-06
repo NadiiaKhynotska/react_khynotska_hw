@@ -19,8 +19,8 @@ const TestUseArr = () => {
             <button onClick={add}>Add item to array</button>
             <div>
                 {data.map(item =>
-                    <div key={item.id}>
-                        <h3>{item.id} {item.name}</h3>
+                    <div key={item.id} >
+                        {item.id} {item.name}
                         <button onClick={()=> deleteItem(item.id)}>Delete item</button>
                     </div>)}
 

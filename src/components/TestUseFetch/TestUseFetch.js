@@ -8,14 +8,14 @@ const TestUseFetch = () => {
     const users = UseFetch('/users')
     return (
         <>
-            {posts.map(post => (
+            {posts?.map(post => (
                 <div key={post.id}>
                     <>id: {post.id}</>
                     <> title: {post.title}</>
                 </div>
             ))}
 
-            {comments.map(comment => (
+            {comments?.map(comment => (
                 <div key={comment.id}>
                     <> id: {comment.id}</>
                     <> email: {comment.email}</>
@@ -23,7 +23,7 @@ const TestUseFetch = () => {
             ))}
 
 
-            {users.map(user =>(
+            {users?.map(user =>(
                 <div key={user.id}>
                     <>Name: {user.name}</>
                 </div>
