@@ -5,20 +5,21 @@ const initialState = {
     loading: false,
     cars: [],
     carForUpdate: null,
-    error: ''
+    error: '',
+
 }
 const carsReducer = (state = initialState, action) => {
     switch (action.type) {
         case carActionsTypes.FETCH_CARS_REQUEST:
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case carActionsTypes.FETCH_CARS_SUCCESS:
             return {
                 loading: false,
                 cars: action.payload,
-                error: ''
+                error: '',
             }
         case carActionsTypes.FETCH_CARS_FAILURE:
             return {
