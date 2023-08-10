@@ -1,4 +1,4 @@
-import {carsService} from "../services";
+
 import {carActionsTypes} from "./carActionsTypes";
 
 const initialState = {
@@ -15,16 +15,24 @@ const carsReducer = (state = initialState, action) => {
                 ...state,
                 loading: true,
             }
-        case carActionsTypes.FETCH_CARS_SUCCESS:
+        case carActionsTypes.SET_CARS:
             return {
+                ...state,
                 loading: false,
                 cars: action.payload,
-                error: '',
+            }
+        case carActionsTypes.SET_CAR_FOR_UPDATE:
+            return {
+              ...state,
+                loading: false,
+                carForUpdate: action.payload,
+
             }
         case carActionsTypes.FETCH_CARS_FAILURE:
             return {
                 loading: false,
                 cars: [],
+                carForUpdate: null,
                 error: action.payload
             }
         default:

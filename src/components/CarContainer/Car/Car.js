@@ -1,19 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import style from './Car.module.css'
 import {useDispatch} from "react-redux";
-import {fetchDeleteCarById} from "../../../redux";
+import {carActions} from "../../../redux";
 
-const Car = ({car,setOnSave}) => {
+const Car = ({car}) => {
     const {id, brand, price, year} = car;
     const dispatch = useDispatch()
-
-    const deleteCar = (id) => {
-        dispatch(fetchDeleteCarById(id))
-
-
-    }
-
 
     return (
         <div className={style.create}>
@@ -21,13 +14,8 @@ const Car = ({car,setOnSave}) => {
             <div>Brand: {brand}</div>
             <div>Price: {price}</div>
             <div>Year: {year}</div>
-            <button>Update</button>
-            <button onClick={() => {
-                {
-                    deleteCar(id)
-                    setOnSave(prev => !prev)
-                }
-            }}>Delete</button>
+            <button onClick={()=>{dispatch(carActions.setCarForUpdate(car))}}>Update</button>
+            <button onClick={() => {dispatch(carActions.deleteCar(id))}}>Delete</button>
 
         </div>
     );

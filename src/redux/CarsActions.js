@@ -1,71 +1,49 @@
 import {carActionsTypes} from "./carActionsTypes";
 import {carsService} from "../services";
 
-const fetchCarsRequest = () => {
-    return {
-        type: carActionsTypes.FETCH_CARS_REQUEST
-    }
+
+const actions = {
+    CarsRequest: () => ({type: carActionsTypes.FETCH_CARS_REQUEST}),
+    SetCars: (payload) => ({type: carActionsTypes.SET_CARS, payload}),
+    setCarForUpdate: (payload) => ({type: carActionsTypes.SET_CAR_FOR_UPDATE, payload}),
+    fetchCarsFailure: (payload) => ({type: carActionsTypes.FETCH_CARS_FAILURE, payload})
 }
 
-const fetchCarsSuccess = (cars) => {
-    return {
-        type: carActionsTypes.FETCH_CARS_SUCCESS,
-        payload: cars
-    }
+const getCars = () => async dispatch => {
+    dispatch(actions.CarsRequest)
+    const {data} = await carsService.getAll()
+        .catch(error => {
+            dispatch(actions.fetchCarsFailure(error.message))
+        })
+    dispatch(actions.SetCars(data))
+
 }
 
-const fetchCarsFailure = (error) => {
-    return {
-        type: carActionsTypes.FETCH_CARS_FAILURE,
-        payload: error
-    }
+const deleteCar = (id) => async dispatch => {
+    await carsService.delete(id)
+    await dispatch(getCars())
 }
 
- export const fetchAllCars = () => {
-    return function (dispatch) {
-        dispatch(fetchCarsRequest())
-       carsService.getAll()
-            .then(response => {
-//response.data is an arr of cars
-                const cars = response.data
-                dispatch(fetchCarsSuccess(cars))
-            })
-            .catch(error => {
-//error. message is the error description
-                dispatch(fetchCarsFailure(error.message))
-            })
-    }
+const createCar = (car) => async dispatch => {
+    await carsService.create(car)
+    await dispatch(getCars())
 }
- export const fetchDeleteCarById =(id)=>{
-     return function (dispatch) {
-         dispatch(fetchCarsRequest())
-         carsService.delete(id)
-             carsService.getAll()
-             .then(response => {
-//response.data is an arr of cars
-                 const cars = response.data
-                 dispatch(fetchCarsSuccess(cars))
-             })
-             .catch(error => {
-//error. message is the error description
-                 dispatch(fetchCarsFailure(error.message))
-             })
-     }
- }
 
- export const fetchSaveCar =(car)=>{
-     return function (dispatch) {
-         dispatch(fetchCarsRequest())
-         carsService.create(car)
-         carsService.getAll()
-             .then(response => {
-//response.data is an arr of cars
-                 const cars = response.data
-                 dispatch(fetchCarsSuccess(cars))
-             })
-             .catch(error => {
-//error. message is the error description
-                 dispatch(fetchCarsFailure(error.message))
-             })
-     }
- }
+const updateCar = (id, car) => async dispatch => {
+    await carsService.updateById(id, car)
+    dispatch(actions.setCarForUpdate(null))
+    await dispatch(getCars())
+}
+
+
+const carActions = {
+    getCars,
+    deleteCar,
+    createCar,
+    updateCar,
+    setCarForUpdate: actions.setCarForUpdate
+}
+
+export {
+    carActions,
+}
