@@ -1,4 +1,3 @@
-
 import {carActionsTypes} from "./carActionsTypes";
 
 const initialState = {
@@ -17,15 +16,17 @@ const carsReducer = (state = initialState, action) => {
             }
         case carActionsTypes.SET_CARS:
             return {
-                ...state,
                 loading: false,
+                carForUpdate: null,
                 cars: action.payload,
+                error: ''
             }
         case carActionsTypes.SET_CAR_FOR_UPDATE:
             return {
-              ...state,
+                cars: [],
                 loading: false,
                 carForUpdate: action.payload,
+                error: ''
 
             }
         case carActionsTypes.FETCH_CARS_FAILURE:
