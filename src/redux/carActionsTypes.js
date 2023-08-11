@@ -1,8 +1,6 @@
 const carActionsTypes ={
-    FETCH_CARS_REQUEST:'FETCH_CARS_REQUEST',
     SET_CARS: 'SET_CARS',
     SET_CAR_FOR_UPDATE: 'SET_CAR_FOR_UPDATE',
-    FETCH_CARS_FAILURE: 'FETCH_CARS_FAILURE',
 }
 
 export {carActionsTypes}

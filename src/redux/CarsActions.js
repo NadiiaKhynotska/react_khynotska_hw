@@ -3,20 +3,13 @@ import {carsService} from "../services";
 
 
 const actions = {
-    CarsRequest: () => ({type: carActionsTypes.FETCH_CARS_REQUEST}),
     SetCars: (payload) => ({type: carActionsTypes.SET_CARS, payload}),
     setCarForUpdate: (payload) => ({type: carActionsTypes.SET_CAR_FOR_UPDATE, payload}),
-    fetchCarsFailure: (payload) => ({type: carActionsTypes.FETCH_CARS_FAILURE, payload})
 }
 
 const getCars = () => async dispatch => {
-    dispatch(actions.CarsRequest)
-    const {data} = await carsService.getAll()
-        .catch(error => {
-            dispatch(actions.fetchCarsFailure(error.message))
-        })
-    dispatch(actions.SetCars(data))
-
+   const response = await carsService.getAll()
+    dispatch(actions.SetCars(response.data))
 }
 
 const deleteCar = (id) => async dispatch => {
@@ -41,7 +34,8 @@ const carActions = {
     deleteCar,
     createCar,
     updateCar,
-    setCarForUpdate: actions.setCarForUpdate
+    setCarForUpdate: actions.setCarForUpdate,
+
 }
 
 export {

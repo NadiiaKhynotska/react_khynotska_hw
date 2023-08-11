@@ -6,7 +6,7 @@ import style from './Cars.module.css'
 import {carActions} from "../../../redux";
 
 const Cars = () => {
-    const {loading, cars, error} = useSelector(state => state.cars)
+    const {cars} = useSelector(state => state.cars)
     const dispatch = useDispatch()
 
 
@@ -19,11 +19,6 @@ const Cars = () => {
     console.log(cars)
 
     return (
-            loading ?
-            <h1>Loading.....</h1>
-            : error ?
-            <h1>Request finished with error {error}</h1>
-            :
             <div>
                 <h1>Cars list</h1>
                 <div className={style.wrapper}>

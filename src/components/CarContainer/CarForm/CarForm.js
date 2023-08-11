@@ -1,8 +1,8 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import {joiResolver} from "@hookform/resolvers/joi";
 
-import {carValidator} from "../../../validators";
+
+
 import style from './CarForm.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {carActions} from "../../../redux";
@@ -17,12 +17,11 @@ const CarForm = () => {
         reset,
         formState: {errors, isValid}, setValue
     }
-        = useForm({mode: 'all', resolver: joiResolver(carValidator)});
-
+        = useForm()
     if (carForUpdate) {
-        setValue('brand', carForUpdate.brand, {shouldValidate: true})
-        setValue('price', carForUpdate.price, {shouldValidate: true})
-        setValue('year', carForUpdate.year, {shouldValidate: true})
+        setValue('brand', carForUpdate.brand)
+        setValue('price', carForUpdate.price)
+        setValue('year', carForUpdate.year)
     }
 
 
@@ -52,8 +51,7 @@ const CarForm = () => {
                 <label>Price</label>
                 <input
                     type='number'
-                    {...register('price',
-                        {
+                    {...register('price',{
                             valueAsNumber: true,
                         }
                     )}
