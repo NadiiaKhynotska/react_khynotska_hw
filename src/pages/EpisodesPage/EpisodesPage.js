@@ -1,9 +1,11 @@
 import React from 'react';
+import {Episodes, EpisodesPagination} from "../../components/EpisodesContainer";
 
 const EpisodesPage = () => {
     return (
         <div>
-            EpisodesPage
+            <Episodes/>
+            <EpisodesPagination/>
         </div>
     );
 };
