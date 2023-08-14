@@ -18,7 +18,7 @@ const EpisodesPagination = () => {
 
     return (
         <div className={css.EpisodePagination}>
-            <button disabled={!prevPage} onClick={toPrevPage}>Ptrev</button>
+            <button disabled={!prevPage} onClick={toPrevPage}>Prev</button>
             <button disabled={!nextPage} onClick={toNextPage}>Next</button>
         </div>
     );
