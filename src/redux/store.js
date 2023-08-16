@@ -3,7 +3,7 @@ import {episodeReducer} from "./slices/episodesSlice";
 
 const store = configureStore({
     reducer: {
-        episodes: episodeReducer()
+        episodes: episodeReducer
     }
 });
 

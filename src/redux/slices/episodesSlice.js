@@ -14,16 +14,16 @@ const initialState = {
 
 const all = createAsyncThunk(
     'episodesSlice/all',
-    async (_, thunkAPI) => {
+    async ({page}, thunkAPI) => {
         try {
-            const {episodes} = await episodeService.getAll(page)
+            const {data} = await episodeService.getAll(page)
                 .map(
                     episode => ({
                         ...episode,
                         characters: episode.characters.map(character => character.split("/").slice(-1)[0]).join(',')
                     })
                 )
-            return episodes
+            return data
         } catch (e) {
             return thunkAPI.rejectWithValue(e.response.data)
         }
