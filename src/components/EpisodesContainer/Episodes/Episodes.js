@@ -7,19 +7,23 @@ import {Episode} from "../Episode/Episode";
 import css from './Episodes.module.css'
 const Episodes = () => {
     const dispatch = useDispatch();
-    const {episodes} = useSelector(state => state.episodes)
+    const {episodes, errors, isLoading} = useSelector(state => state.episodes)
     const [query, setQuery] = useSearchParams({page: '1'})
+    const page = query.get('page')
 
 
     useEffect(() => {
-        dispatch(episodeActions.all(query.get('page')))
+        dispatch(episodeActions.all({page}))
         setQuery(prev => ({...prev, page: prev.get('page')}))
     }, [query]);
 
     console.log(episodes)
     console.log(query.get('page'))
 
-    return (
+    return ( isLoading? <h1>Loading ......</h1>:
+
+            errors? <h1>{errors}</h1>:
+
         <div className={css.Episodes}>
             {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
         </div>

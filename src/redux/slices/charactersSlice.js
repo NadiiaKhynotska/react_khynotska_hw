@@ -29,7 +29,7 @@ const charactersSlice = createSlice({
     }
 )
 
-const {reducer:characterReducer,actions}= charactersSlice
+const {reducer:characterReducer,actions} = charactersSlice
 
 const characterActions = {
     all,

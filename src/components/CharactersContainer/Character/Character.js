@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Character = () => {
+import css from './Character.module.css'
+const Character = ({character}) => {
+    const {name ,image} = character;
     return (
-        <div>
-            Character
+        <div className={css.Character}>
+            <div> Name - {name}</div>
+            <img src={image} alt={name}/>
         </div>
     );
 };
