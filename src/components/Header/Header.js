@@ -8,7 +8,7 @@ const Header = () => {
     console.log(currentEpisode)
     return (
         <div className={css.Header}>
-            Rick & Morty
+            {currentEpisode? currentEpisode: 'Rick & Morty'}
         </div>
     );
 };

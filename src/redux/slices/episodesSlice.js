@@ -29,7 +29,7 @@ const episodesSlice = createSlice({
     name: 'episodesSlice',
     initialState,
     reducers: {
-        setCurrentEpisode:(state, action)=>{
+        setCurrentEpisode: (state, action)=>{
             state.currentEpisode = action.payload
         }
     },
@@ -62,8 +62,8 @@ const episodesSlice = createSlice({
 const {reducer: episodeReducer,actions} = episodesSlice
 
 const episodeActions = {
-    setCurrentEpisode: actions.setCurrentEpisode,
     all,
+    setCurrentEpisode: actions.setCurrentEpisode
 }
 
 export {
