@@ -8,7 +8,8 @@ const initialState = {
     nextPage: null,
     episodes: [],
     errors: null,
-    isLoading: null
+    isLoading: null,
+    currentEpisode:null,
 }
 
 
@@ -27,7 +28,11 @@ const all = createAsyncThunk(
 const episodesSlice = createSlice({
     name: 'episodesSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setCurrentEpisode:(state, action)=>{
+            state.currentEpisode = action.payload
+        }
+    },
     extraReducers: builder =>
         builder
             .addCase(all.fulfilled, (state, action) => {
@@ -38,6 +43,7 @@ const episodesSlice = createSlice({
                     }))
                 state.prevPage = action.payload.info.prev
                 state.nextPage = action.payload.info.next
+                state.currentEpisode = null
             })
             .addMatcher(isPending(), state => {
                 state.isLoading = true
@@ -53,9 +59,10 @@ const episodesSlice = createSlice({
             })
 })
 
-const {reducer: episodeReducer} = episodesSlice
+const {reducer: episodeReducer,actions} = episodesSlice
 
 const episodeActions = {
+    setCurrentEpisode: actions.setCurrentEpisode,
     all,
 }
 

@@ -25,6 +25,7 @@ const Episodes = () => {
             errors? <h1>{errors}</h1>:
 
         <div className={css.Episodes}>
+
             {episodes.map(episode => <Episode key={episode.id} episode={episode}/>)}
         </div>
     );
