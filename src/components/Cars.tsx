@@ -1,14 +1,17 @@
-import {FC, PropsWithChildren} from "react";
+import {Dispatch, FC, PropsWithChildren, SetStateAction} from "react";
 import {Car} from "./Car";
+import {ICar} from "../interfaces";
 
 interface IProps extends PropsWithChildren {
-
+    cars: ICar[];
+    setCarForUpdate: Dispatch<SetStateAction<ICar>>
 }
 
-const Cars: FC<IProps> = () => {
+const Cars: FC<IProps> = ({cars,setCarForUpdate}) => {
+
     return (
         <div>
-            <Car/>
+            {cars.map(car =>  <Car key={car.id} car={car} setCarForUpdate={setCarForUpdate}/>)}
         </div>
     );
 };
