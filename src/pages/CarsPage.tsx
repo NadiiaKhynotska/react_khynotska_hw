@@ -6,19 +6,21 @@ import {ICar} from "../interfaces";
 import {carService} from "../services";
 
 const CarsPage = () => {
-    const [cars, setCars] = useState<ICar[]>([])
-    const [trigger, setTrigger] = useState<boolean>(true)
-    const [carForUpdate, setCarForUpdate] = useState<ICar>(null)
-
-    useEffect(()=>{
-        carService.getAll().then(({data})=>setCars(data))
-    },[trigger])
+    // const [cars, setCars] = useState<ICar[]>([])
+    // const [trigger, setTrigger] = useState<boolean>(true)
+    // const [carForUpdate, setCarForUpdate] = useState<ICar>(null)
+    //
+    // useEffect(()=>{
+    //     carService.getAll().then(({data})=>setCars(data))
+    // },[trigger])
 
     return (
         <div>
             <Outlet/>
-            <CarForm setTrigger={setTrigger} carForUpdate={carForUpdate} setCarForUpdate={setCarForUpdate}/>
-            <Cars cars={cars} setCarForUpdate={setCarForUpdate}/>
+            {/*<CarForm setTrigger={setTrigger} carForUpdate={carForUpdate} setCarForUpdate={setCarForUpdate}/>*/}
+            {/*<Cars cars={cars} setCarForUpdate={setCarForUpdate} setTrigger={setTrigger}/>*/}
+            <CarForm />
+            <Cars/>
         </div>
     );
 };

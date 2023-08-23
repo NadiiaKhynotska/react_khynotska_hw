@@ -1,0 +1,21 @@
+
+.Car {
+    width: 10%;
+    height: 10%;
+    padding: 10px 16px;
+    margin: 20px ;
+    border-bottom: 1px solid #fafafa;
+    box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.1);
+}
+.Car:hover{
+    box-shadow: 2px 6px 10px rgb(6, 140, 238);
+}
+.Car button {
+    background: darkblue;
+    color: #fff;
+    border: 0;
+    padding: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 2px;
+}

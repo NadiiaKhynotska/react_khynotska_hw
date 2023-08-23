@@ -1,0 +1,9 @@
+.CarDetails{
+    width: 30%;
+    height: 20%;
+    padding: 10px 16px;
+    margin: 20px ;
+    border-bottom: 1px solid #fafafa;
+    box-shadow: 2px 6px 10px rgb(6, 140, 238);
+    font-size: 27px;
+}

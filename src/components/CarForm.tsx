@@ -2,15 +2,20 @@ import {Dispatch, FC, PropsWithChildren, SetStateAction} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {ICar} from "../interfaces";
 import {carService} from "../services";
-
+import {useAppDispatch, useAppSelector} from "../hooks";
+import {carActions} from "../redux";
+import css from './CarForm.module.css'
 interface IProps extends PropsWithChildren {
-    setTrigger: Dispatch<SetStateAction<boolean>>;
-    carForUpdate: ICar;
-    setCarForUpdate: Dispatch<SetStateAction<ICar>>
+    // setTrigger: Dispatch<SetStateAction<boolean>>;
+    // carForUpdate: ICar;
+    // setCarForUpdate: Dispatch<SetStateAction<ICar>>
 }
 
-const CarForm: FC<IProps> = ({setTrigger,carForUpdate, setCarForUpdate}) => {
+const CarForm: FC<IProps> = () => {
     const {reset, register, setValue, handleSubmit} = useForm<ICar>();
+
+    const {carForUpdate} = useAppSelector(state => state.cars);
+    const dispatch = useAppDispatch();
 
     if(carForUpdate){
         setValue('brand',carForUpdate.brand)
@@ -19,25 +24,24 @@ const CarForm: FC<IProps> = ({setTrigger,carForUpdate, setCarForUpdate}) => {
     }
 
     const save: SubmitHandler<ICar> = async (car) => {
-       await carService.create(car)
-        setTrigger(prev=> !prev)
+        dispatch(carActions.create({car}))
         reset()
     }
 
     const update:SubmitHandler<ICar> = async (car) => {
-        await carService.updateByID(carForUpdate.id, car)
-        setCarForUpdate(null)
-        setTrigger(prev=>!prev)
+       await dispatch(carActions.update({id:carForUpdate.id, car}))
         reset()
     };
 
     return (
-        <form onSubmit={handleSubmit(carForUpdate? update:save)}>
-            <input type={"text"} placeholder={'brand'}{...register('brand')}/>
-            <input type={"text"} placeholder={'price'}{...register('price')}/>
-            <input type={"text"} placeholder={'year'}{...register('year')}/>
-            <button>{carForUpdate? 'Update': 'Save'}</button>
-        </form>
+        <div className={css.CarForm}>
+            <form onSubmit={handleSubmit(carForUpdate ? update : save)}>
+                <input type={"text"} placeholder={'brand'}{...register('brand')}/>
+                <input type={"text"} placeholder={'price'}{...register('price')}/>
+                <input type={"text"} placeholder={'year'}{...register('year')}/>
+                <button>{carForUpdate ? 'Update' : 'Save'}</button>
+            </form>
+        </div>
     );
 };
 
