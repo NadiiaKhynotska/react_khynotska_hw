@@ -2,10 +2,17 @@ import React from 'react';
 
 import css from './Header.module.css'
 import {Link} from "react-router-dom";
-import {useAppSelector} from "../../hooks";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {authService} from "../../services";
+import {authAction} from "../../redux";
 
 const Header = () => {
     const {me} = useAppSelector(state => state.auth);
+    const dispatch = useAppDispatch();
+
+    if(authService.getAccessToken() && !me){
+dispatch(authAction.me())
+    }
 
     return (
         <div className={css.Header}>
