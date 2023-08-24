@@ -1,4 +1,5 @@
 import {FC, PropsWithChildren} from "react";
+
 import {ICar} from "../interfaces";
 import css from './CarDetails.module.css'
 

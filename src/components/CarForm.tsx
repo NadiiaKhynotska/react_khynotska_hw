@@ -1,14 +1,13 @@
-import {Dispatch, FC, PropsWithChildren, SetStateAction} from "react";
+import {FC, PropsWithChildren} from "react";
 import {SubmitHandler, useForm} from "react-hook-form";
+
 import {ICar} from "../interfaces";
-import {carService} from "../services";
 import {useAppDispatch, useAppSelector} from "../hooks";
 import {carActions} from "../redux";
 import css from './CarForm.module.css'
+
 interface IProps extends PropsWithChildren {
-    // setTrigger: Dispatch<SetStateAction<boolean>>;
-    // carForUpdate: ICar;
-    // setCarForUpdate: Dispatch<SetStateAction<ICar>>
+
 }
 
 const CarForm: FC<IProps> = () => {

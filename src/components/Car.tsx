@@ -1,16 +1,14 @@
-import {Dispatch, FC, PropsWithChildren, SetStateAction} from "react";
-import {ICar} from "../interfaces";
-import {carService} from "../services";
+import {FC, PropsWithChildren} from "react";
 import {useNavigate} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../hooks";
+
+import {ICar} from "../interfaces";
+import {useAppDispatch} from "../hooks";
 import {carActions} from "../redux";
 import css from './Car.module.css'
 
 
 interface IProps extends PropsWithChildren {
     car: ICar;
-    // setCarForUpdate: Dispatch<SetStateAction<ICar>>
-    // setTrigger: Dispatch<SetStateAction<boolean>>
 }
 
 const Car: FC<IProps> = ({car}) => {

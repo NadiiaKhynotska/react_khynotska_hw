@@ -1,0 +1,18 @@
+.Header{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 90px;
+    background-color: darkblue;
+    border-bottom: 1px solid #fafafa;
+    box-shadow: 2px 6px 10px rgb(6, 140, 238);
+    font-size: 29px;
+    margin-bottom: 30px;
+    color:snow;
+}
+.Header a{
+    color: snow;
+    text-decoration: none;
+    margin: 0 25px;
+}
+
