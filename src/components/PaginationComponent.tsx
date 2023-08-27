@@ -4,12 +4,12 @@ import {useSearchParams} from "react-router-dom";
 import css from './Pagination.module.css'
 
 const PaginationComponent = () => {
-    const {prev, next,total_pages} = useAppSelector(state => state.cars);
+    const {prev, next} = useAppSelector(state => state.cars);
     const [, setQuery] = useSearchParams();
     const toPrevPage = () => {
         setQuery(prev => ({...prev, page: +prev.get('page') - 1}))
     };
-console.log(total_pages)
+
     const toNextPage = () => {
         setQuery(prev => ({...prev, page: +prev.get('page') + 1}))
     };

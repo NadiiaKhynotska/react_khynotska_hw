@@ -8,25 +8,34 @@ import {RootState} from "../store";
 interface IState {
     cars: ICar[];
     carForUpdate: ICar;
-    prev:string;
-    next:string;
-    total_pages:number;
+    prev: string;
+    next: string;
+    total_pages: number;
+    total_items: number;
+    currentPage: number;
+    currentSize: number;
 }
 
 const initialState: IState = {
     cars: [],
     carForUpdate: null,
-    prev:null,
-    next:null,
-    total_pages:null,
+    prev: null,
+    next: null,
+    total_pages: null,
+    total_items: null,
+    currentPage: null,
+    currentSize: null,
 }
 
-const getAll = createAsyncThunk<{ data:IPagination<ICar> ,page:number}, { page:number }>(
+const getAll = createAsyncThunk<{ data: IPagination<ICar>, page: number, size: number }, {
+    page: number,
+    size: number
+}>(
     'carSlice/getAll',
-    async ({page}, {rejectWithValue}) => {
+    async ({page, size}, {rejectWithValue}) => {
         try {
-            const {data} = await carService.getAll(page)
-            return {data, page}
+            const {data} = await carService.getAll(page, size)
+            return {data, page, size}
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -36,11 +45,11 @@ const getAll = createAsyncThunk<{ data:IPagination<ICar> ,page:number}, { page:n
 
 const create = createAsyncThunk<void, { car: ICar }>(
     'carSlice/create',
-    async ({car}, {rejectWithValue, dispatch,getState}) => {
+    async ({car}, {rejectWithValue, dispatch, getState}) => {
         try {
             await carService.create(car)
-            const {cars:{total_pages}} = getState() as RootState;
-            dispatch(getAll({page:total_pages}))
+            const {cars:{currentPage, currentSize}} = getState() as RootState;
+            await dispatch(getAll({page:currentPage, size:currentSize}))
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -50,10 +59,11 @@ const create = createAsyncThunk<void, { car: ICar }>(
 
 const update = createAsyncThunk<void, { id: number, car: ICar }>(
     'carSlice/update',
-    async ({car, id}, {rejectWithValue, dispatch}) => {
+    async ({car, id}, {rejectWithValue, dispatch,getState}) => {
         try {
             await carService.updateByID(id, car)
-            // await dispatch(getAll())
+            const {cars:{currentPage, currentSize}} = getState() as RootState;
+            await dispatch(getAll({page:currentPage, size:currentSize}))
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -64,10 +74,11 @@ const update = createAsyncThunk<void, { id: number, car: ICar }>(
 
 const deleteCar = createAsyncThunk<void, { id: number }>(
     'carSlice/deleteCar',
-    async ({id}, {rejectWithValue, dispatch}) => {
+    async ({id}, {rejectWithValue, dispatch, getState}) => {
         try {
             await carService.deleteById(id)
-            // await dispatch(getAll())
+            const {cars:{currentPage, currentSize}} = getState() as RootState;
+            await dispatch(getAll({page:currentPage, size:currentSize}))
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
@@ -89,6 +100,9 @@ const carSlice = createSlice({
             state.prev = action.payload.data.prev
             state.next = action.payload.data.next
             state.total_pages = action.payload.data.total_pages
+            state.total_items = action.payload.data.total_items
+            state.currentPage = action.payload.page
+            state.currentSize = action.payload.size
         })
         .addCase(update.fulfilled, state => {
             state.carForUpdate = null
