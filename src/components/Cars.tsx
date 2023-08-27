@@ -14,14 +14,14 @@ const Cars: FC<IProps> = () => {
 
     const dispatch = useAppDispatch();
     const {cars} = useAppSelector(state => state.cars);
-    const [query, setQuery] = useSearchParams({page: '1',size: '10'});
+    const [query, setQuery] = useSearchParams({page: '1'});
     const page = +query.get('page')
-    const size = +query.get('size')
+
 
     useEffect(() => {
-        dispatch(carActions.getAll({page,size}))
+        dispatch(carActions.getAll({page}))
         setQuery(prev => ({...prev, page: prev.get('page')}))
-    }, [page,dispatch, setQuery, size]);
+    }, [page,dispatch, setQuery]);
 
     return (
         <div className={css.Cars}>
