@@ -25,8 +25,8 @@ const CarForm: FC<IProps> = () => {
     }
 
     const save: SubmitHandler<ICar> = async (car) => {
-        dispatch(carActions.create({car}))
-        dispatch(carActions.getAll({page:total_pages}))
+        await dispatch(carActions.create({car}))
+        // dispatch(carActions.getAll({page:total_pages}))
         setQuery(prev => {
             prev.set('page',total_pages.toString())
             return prev

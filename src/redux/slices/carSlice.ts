@@ -48,6 +48,8 @@ const create = createAsyncThunk<void, { car: ICar }>(
     async ({car}, {rejectWithValue, dispatch, getState}) => {
         try {
             await carService.create(car)
+            const {cars:{total_pages}} = getState() as RootState;
+            await dispatch(getAll({page:total_pages}))
         } catch (e) {
             const err = e as AxiosError
             return rejectWithValue(err.response.data)
